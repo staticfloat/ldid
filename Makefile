@@ -3,15 +3,20 @@ INSTALLPREFIX  ?= /usr/local
 CFLAGS += -O2 -fPIC
 CFLAGS += -Wall
 CFLAGS += -Wno-strict-aliasing
+CFLAGS += -I$(INSTALLPREFIX)/include
 
 CXXFLAGS += -O2 -fPIC
 CXXFLAGS += -Wall
 CXXFLAGS += -Wno-sign-compare
 CXXFLAGS += -Wno-deprecated-declarations
 CXXFLAGS += -Wno-unused-function
+CXXFLAGS += -I$(INSTALLPREFIX)/include
+
+LDFLAGS += -lplist-2.0 -lcrypto -pthread
+CXXFLAGS += -L$(INSTALLPREFIX)/lib
+
 
 LDID_OBJS += ldid.cpp.o lookup2.c.o
-LDFLAGS += -lplist-2.0 -lcrypto -pthread
 
 .PHONY: all clean
 
