@@ -1,34 +1,17 @@
 INSTALLPREFIX  ?= /usr/local
 
-INCLUDES += -isystem libplist/src
-INCLUDES += -isystem libplist/libcnary/include
-INCLUDES += -isystem libplist/include
-
 CFLAGS += -O2 -fPIC
-CFLAGS += $(INCLUDES)
 CFLAGS += -Wall
 CFLAGS += -Wno-strict-aliasing
 
 CXXFLAGS += -O2 -fPIC
-CXXFLAGS += $(INCLUDES)
 CXXFLAGS += -Wall
 CXXFLAGS += -Wno-sign-compare
 CXXFLAGS += -Wno-deprecated-declarations
 CXXFLAGS += -Wno-unused-function
 
-LDID_OBJS += libplist/libcnary/node.o
-LDID_OBJS += libplist/libcnary/node_list.o
-LDID_OBJS += libplist/src/base64.o
-LDID_OBJS += libplist/src/time64.o
-LDID_OBJS += libplist/src/bytearray.o
-LDID_OBJS += libplist/src/ptrarray.o
-LDID_OBJS += libplist/src/bplist.o
-LDID_OBJS += libplist/src/plist.o
-LDID_OBJS += libplist/src/xplist.o
-LDID_OBJS += libplist/src/hashtable.o
 LDID_OBJS += ldid.cpp.o lookup2.c.o
-
-LDFLAGS = -lcrypto -pthread
+LDFLAGS += -lplist-2.0 -lcrypto -pthread
 
 .PHONY: all clean
 
